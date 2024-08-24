@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HW_AspNet_LS3_second.props" />
+</Project>
