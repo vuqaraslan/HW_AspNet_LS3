@@ -40,55 +40,7 @@ namespace HW_AspNet_LS3_second.Controllers
             return View(productListViewModel);
             //return Ok(result);
         }
-
-        // GET: StudentController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: StudentController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: StudentController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StudentController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: StudentController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
+        
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
@@ -170,7 +122,6 @@ namespace HW_AspNet_LS3_second.Controllers
             {
                 if (newAddProduct.NewProduct != null)
                 {
-
                     await _productService.AddAsync(newAddProduct.NewProduct);
                     return RedirectToAction(nameof(Index));
                 }
@@ -178,7 +129,7 @@ namespace HW_AspNet_LS3_second.Controllers
             return View(newAddProduct);
         }
 
-        public async Task<IActionResult> GetProductByIdAsync(int id )
+        public async Task<IActionResult> GetProductById(int id )
         {
             var product = await _productService.GetByIdAsync(id);
             if (product != null)
@@ -187,7 +138,6 @@ namespace HW_AspNet_LS3_second.Controllers
             }
             return NotFound("Not found !");
         }
-
 
         public async Task<IActionResult> GetProductByName(string name)
         {
@@ -198,22 +148,6 @@ namespace HW_AspNet_LS3_second.Controllers
             }
             return NotFound("Not found !");
         }
-
-
-
-        // POST: StudentController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }
